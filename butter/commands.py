@@ -110,12 +110,11 @@ def setup_repo(repo_path, pipeline, opt_pipelines, cleanup=True):
         cd(repo_path)
         sh(["git", "fat", "init"])
         cd(orig_path)
-        sh(["git", "clone", "--quiet",
-            "--config", "user.name="+config.get("master_user"),
-            "--config", "user.email="+config.get("master_email"),
-            repo_path, work_path])
+        sh(["git", "clone", "--quiet",repo_path, work_path])
 
         cd(work_path)
+        sh(["git", "config", "user.name", config.get("master_user")])
+        sh(["git", "config", "user.email", config.get("master_email")])
         sh(["git", "fat", "init"])
         allprods, _, _, = make_pipeline_skeleton(
             pipeline, opt_pipelines, verbose=False)
