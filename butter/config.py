@@ -49,6 +49,7 @@ def read_config(fname):
     except Exception as e:
         msg = ("Error parsing config file `{}': "+str(e))
         print >> sys.stderr, msg.format(fname)
+        sys.exit(1)
     return config
 
 
