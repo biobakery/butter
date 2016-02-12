@@ -12,13 +12,16 @@ if 'HOME' in os.environ:
     DEFAULT_CONFIG_LOCATIONS.insert(1,
         "{}/.config/butter/butter.conf".format(os.environ['HOME'])
     )
+    home_local = os.environ['HOME']+'/fatstore'
+else:
+    home_local = '/fatstore'
 
 class DefaultConfig:
     d = {
         "master_user"     : "repomaster",
         "master_email"    : "schwager@hsph.harvard.edu",
         "autocommit_msg"  : "postrun-autocommit",
-        "fatstore"        : "/home/rschwager/fatstore",
+        "fatstore"        : home_local,
         "virtualenv"      : "/home/rschwager/anadama_dev",
         "reporter_url"    : "http://localhost:8082/api/{}",
         "large_file_bytes": 1*1024*1024, # 1MB
