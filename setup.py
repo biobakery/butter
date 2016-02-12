@@ -9,6 +9,9 @@ setup(
         "Development Status :: 1 - Pre-Alpha"
     ],
     packages=['butter'],
+    install_requires=[
+        "git-fat==0.5.0"
+    ],
     entry_points={
         'console_scripts': [
             'butter = butter.cli:main'
