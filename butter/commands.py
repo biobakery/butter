@@ -79,9 +79,13 @@ def _write_scripts(scripts_dict, *args, **kwargs):
 
 
 def is_autocommit(rev_str):
-    commit_msg, _ = sh(["git", "show", "--format='%an %s'", "-s", "HEAD"])
+    commit_msg, _ = sh(["git", "show", "--format='%an %s'", "-s", rev_str])
     return commit_msg == "{} {}".format(config.get("master_user"),
                                         config.get("autocommit_msg"))
+
+def get_commit_hash(rev_str):
+    return sh(["git", "show", "--format='%h'", '-s', rev_str])[0]
+
 
 def get_reporter_url(project_name):
     return config.get("reporter_url").format(project_name)
