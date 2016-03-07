@@ -101,7 +101,8 @@ def get_runner_options():
 
 
 def setup_repo(repo_path, pipeline, opt_pipelines, cleanup=True):
-    work_path = repo_path+".work"
+    work_path = repo_path
+    repo_path = repo_path+'.git'
     work_gitdir = os.path.join(work_path, ".git")
     repo_path, work_path, work_gitdir = map(
         os.path.abspath, (repo_path, work_path, work_gitdir))
